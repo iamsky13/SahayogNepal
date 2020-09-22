@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    #cf-context {
+        width: 70vw;
+        height: 70vh;
+    }
+    #form {
+        height: 0px;
+        overflow: hidden;
+    }
+</style>
+<div class="container">
+   
+    <form id="form" cf-form method="post" asp-controller="Donor" asp-action="SubmitData">
+        <cf-robot-message cf-questions="Filling out this form will only take 2 minutes and it could save someone's life.
+We will not ask you for any information we do not need."></cf-robot-message>
+
+        <input cf-questions="Did you ever get Covid? " cf-label="Yes" type="radio" value="0">
+        <input type="text" name="name" cf-questions="What is your name?">
+        <input type="number" name="mobile" cf-questions="What is your mobile number?">
+        <input type="number" name="age" cf-questions="How old are you?">
+        <input cf-questions="What's your gender?" type="radio" name="gender" value="female" cf-label="female">
+        <input type="radio" name="gender" value="male" cf-label="male">
+        <input type="radio" name="gender" value="other" cf-label="other">
+        <input type="text" name="city" cf-questions="What is your current address?">
+        <input cf-questions="What's your blood group?" type="radio" name="blood" value="A+" cf-label="A+">
+        <input type="radio" name="blood" value="A-" cf-label="A-">
+        <input type="radio" name="blood" value="B+" cf-label="B+">
+        <input type="radio" name="blood" value="B-" cf-label="B-">
+        <input type="radio" name="blood" value="O+" cf-label="O+">
+        <input type="radio" name="blood" value="O-" cf-label="O-">
+        <input type="radio" name="blood" value="AB+" cf-label="AB+">
+        <input type="radio" name="blood" value="AB-" cf-label="AB-">
+        <input type="date" name="recoveredDate" cf-questions="What was your date of recovery? (dd/mm/yyyy)">
+        <input cf-questions="Do you have a discharge report from the hospital?" type="radio" name="discharge" value="Yes" cf-label="Yes">
+        <input type="radio" name="discharge" value="NotYet" cf-label="Not Yet">
+        <cf-robot-message cf-questions="By submitting this form"></cf-robot-message>
+        <cf-robot-message cf-questions="I confirm that the information I have provided in here is complete and accurate to the best of my knowledge."></cf-robot-message>
+        <cf-robot-message cf-questions="I confirm that I wish to share the information provided in here for the exclusive purpose(s) of matching with patients from the database of patients registered with sahayogNepal and sharing this information directly and solely with the [matched patients and/or their next of-kin."></cf-robot-message>
+        <input cf-questions=Confirmation? name="confirm" cf-label="Yes submit by data" type="radio" value="0">
+
+    </form>
+    <div id="cf-context" role="cf-context" cf-context></div>
+    <!-- partial -->
+
+</div>
+<script src='https://cdn.jsdelivr.net/gh/space10-community/conversational-form@latest/dist/conversational-form.min.js'></script>
+<script>
+    window.onload = function () {
+        var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+            formEl: document.getElementById("form"),
+            context: document.getElementById("cf-context"),
+            submitCallback: function () {
+                var formData = conversationalForm.getFormData();
+                var formDataSerialized = conversationalForm.getFormData(true);
+                console.log("Formdata:", formData);
+                console.log("Formdata, serialized:", formDataSerialized);
+                $.post("/donor/submitData/", { donorData: formDataSerialized })
+                    .done(function () {
+                        conversationalForm.addRobotChatResponse("Thank you, you have completed your registration");
+                    }).fail(function () {
+                        conversationalForm.addRobotChatResponse("Error ocurred, Please contact site owner and try again later ");
+
+                    });
+                
+            }
+        });
+    };
+</script>
+
