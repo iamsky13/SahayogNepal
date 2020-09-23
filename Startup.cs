@@ -5,9 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SahayogNepal.Data;
+using SahayogNepal.Interface;
+using SahayogNepal.Models;
+using SahayogNepal.RepositoryAndSpecification;
 
 namespace SahayogNepal
 {
@@ -24,6 +30,14 @@ namespace SahayogNepal
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DevString"));
+            });
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+            services.AddTransient(typeof(IAsyncRepository<>), typeof(Repository<>));
+            services.AddTransient<IUnitOfWork, GenericUnitOfWork>();
+            services.AddScoped<IDonorService, DonorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
