@@ -33,7 +33,8 @@ namespace SahayogNepal.Service
                     MobileNumber = patientViewModel.mobile,
                     Name = patientViewModel.name,
                     Hospital= patientViewModel.hospital,
-                    RegisteredDate=DateTime.Now
+                    RegisteredDate = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Nepal Standard Time"))
+
                 };
                 await _uow.AsyncRepository<Patient>().AddAsync(patientModel);
                 return await _uow.CommitAsync();

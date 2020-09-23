@@ -33,7 +33,7 @@ namespace SahayogNepal.Service
                     MobileNumber = donorViewModel.mobile,
                     Name = donorViewModel.name,
                     RecoveredDate = GetParsedDate(donorViewModel.recoveredDate),
-                    RegisteredDate=DateTime.Now
+                    RegisteredDate = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.FindSystemTimeZoneById("Nepal Standard Time"))
                 };
                 await _uow.AsyncRepository<Donor>().AddAsync(donorModel);
                 return await _uow.CommitAsync();
