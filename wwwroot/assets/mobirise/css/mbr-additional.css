@@ -357,9 +357,9 @@ body {
 }
 .btn-success-outline,
 .btn-success-outline:active {
-  background-color: transparent !important;
-  border-color: transparent;
-  color: #40b0bf;
+    background-color: transparent !important;
+    border-color: transparent;
+    color: #4e3da9;
 }
 .btn-success-outline:hover,
 .btn-success-outline:focus,
