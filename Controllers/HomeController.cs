@@ -34,7 +34,11 @@ namespace SahayogNepal.Controllers
             };
             return View(model);
         }
-
+        [HttpGet("plasma-therapy")]
+        public IActionResult PlasmaTherapy()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
