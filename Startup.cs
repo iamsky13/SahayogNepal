@@ -14,6 +14,7 @@ using SahayogNepal.Data;
 using SahayogNepal.Interface;
 using SahayogNepal.Models;
 using SahayogNepal.RepositoryAndSpecification;
+using SahayogNepal.Service;
 
 namespace SahayogNepal
 {
@@ -38,6 +39,7 @@ namespace SahayogNepal
             services.AddTransient(typeof(IAsyncRepository<>), typeof(Repository<>));
             services.AddTransient<IUnitOfWork, GenericUnitOfWork>();
             services.AddScoped<IDonorService, DonorService>();
+            services.AddScoped<IPatientService, PatientService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

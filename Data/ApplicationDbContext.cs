@@ -11,6 +11,7 @@ namespace SahayogNepal.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public virtual DbSet<Donor> Donors { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
      : base(options)
         {
@@ -23,6 +24,7 @@ namespace SahayogNepal.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Donor>().HasKey(x => x.Id);
+            builder.Entity<Patient>().HasKey(x => x.Id);
             base.OnModelCreating(builder);
 
         }
