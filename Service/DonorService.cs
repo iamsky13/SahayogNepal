@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SahayogNepal
+namespace SahayogNepal.Service
 {
     public class DonorService : IDonorService
     {
@@ -33,6 +33,7 @@ namespace SahayogNepal
                     MobileNumber = donorViewModel.mobile,
                     Name = donorViewModel.name,
                     RecoveredDate = GetParsedDate(donorViewModel.recoveredDate),
+                    RegisteredDate=DateTime.Now
                 };
                 await _uow.AsyncRepository<Donor>().AddAsync(donorModel);
                 return await _uow.CommitAsync();
@@ -55,8 +56,8 @@ namespace SahayogNepal
         private DateTime? GetParsedDate(string recoveredDate)
         {
             DateTime dateResult;
-            DateTime.TryParse(recoveredDate, out dateResult);
-            return dateResult;
+            if(DateTime.TryParse(recoveredDate, out dateResult)) return dateResult;
+            return null;
         }
     }
 }

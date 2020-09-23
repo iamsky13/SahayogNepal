@@ -4,27 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SahayogNepal.Interface;
-using SahayogNepal.Models;
 using SahayogNepal.Models.ViewModels;
 
 namespace SahayogNepal.Controllers
 {
-    public class DonorController : Controller
+    public class PatientController : Controller
     {
-        private readonly IDonorService donorService;
+        private readonly IPatientService patientService;
 
-        public DonorController(IDonorService donorService)
+        public PatientController(IPatientService PatientService)
         {
-            this.donorService = donorService;
+            this.patientService = PatientService;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-        public async Task<bool> SubmitDonorData(DonorViewModel donorData)
+        public async Task<bool> SubmitPatientData(PatientViewModel PatientData)
         {
-            return await donorService.AddDonor(donorData);
+            return await patientService.AddPatient(PatientData);
         }
     }
 }

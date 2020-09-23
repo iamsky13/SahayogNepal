@@ -7,8 +7,8 @@ namespace SahayogNepal.Models.Enums
 {
     public enum Gender
     {
-        Male,
-        Female,
-        Other
+        male,
+        female,
+        other
     }
 }
