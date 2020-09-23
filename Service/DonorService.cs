@@ -18,7 +18,10 @@ namespace SahayogNepal.Service
         {
             _uow = uow;
         }
-
+        public async Task<int> TotalDonor()
+        {
+            return await _uow.AsyncRepository<Donor>().CountAsync(x=>true);
+        }
         public async Task<bool> AddDonor(DonorViewModel donorViewModel)
         {
             try

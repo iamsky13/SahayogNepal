@@ -9,5 +9,6 @@ namespace SahayogNepal.Interface
     public interface IDonorService
     {
         Task<bool> AddDonor(DonorViewModel donorViewModel);
+        Task<int> TotalDonor();
     }
 }

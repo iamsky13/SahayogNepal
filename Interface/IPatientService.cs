@@ -9,5 +9,6 @@ namespace SahayogNepal.Interface
     public interface IPatientService
     {
         Task<bool> AddPatient(PatientViewModel patientViewModel);
+        Task<int> TotalPatient();
     }
 }

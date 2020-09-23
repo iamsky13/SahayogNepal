@@ -18,7 +18,10 @@ namespace SahayogNepal.Service
         {
             _uow = uow;
         }
-
+        public async Task<int> TotalPatient()
+        {
+            return await _uow.AsyncRepository<Patient>().CountAsync(x => true);
+        }
         public async Task<bool> AddPatient(PatientViewModel patientViewModel)
         {
             try

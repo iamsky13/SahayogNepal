@@ -5,22 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SahayogNepal.Interface;
 using SahayogNepal.Models;
+using SahayogNepal.Models.ViewModels;
 
 namespace SahayogNepal.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPatientService patientService;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IDonorService donorService;
+
+        public HomeController(ILogger<HomeController> logger, IPatientService patientService, IDonorService donorService) 
         {
+            this.patientService = patientService;
+            this.donorService = donorService;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = new HomeViewModel
+            {
+                Donors = await donorService.TotalDonor(),
+                Patients = await patientService.TotalPatient()
+            };
+            return View(model);
         }
 
         public IActionResult Privacy()

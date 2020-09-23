@@ -1,6 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Donate Plasma Save Life";
 }
+@model SahayogNepal.Models.ViewModels.HomeViewModel
 <section class="header1 cid-s48MCQYojq mbr-fullscreen mbr-parallax-background" id="header1-f">
 
 
@@ -54,8 +55,8 @@
                             <strong>Donors</strong>
                         </h6>
                         <ul class="list mbr-fonts-style mb-5 display-7">
-                            <li class="item-wrap">Total Donors Registered: 0</li>
-                            <li class="item-wrap">Latest Donor Registered on: </li>
+                            <li class="item-wrap">Total Donors Registered: @Model.Donors</li>
+                            @*<li class="item-wrap">Latest Donor Registered on: </li>*@
                         </ul>
                     </div>
 
@@ -69,8 +70,8 @@
                             <strong>Patients</strong>
                         </h6>
                         <ul class="list mbr-fonts-style mb-5 display-7">
-                            <li class="item-wrap">Total Patient Registered: 0</li>
-                            <li class="item-wrap">Latest Patient Registered on: </li>
+                            <li class="item-wrap">Total Patient Registered: @Model.Patients</li>
+                            @*<li class="item-wrap">Latest Patient Registered on: </li>*@
                         </ul>
                     </div>
 
