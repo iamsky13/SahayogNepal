@@ -760,7 +760,7 @@ a {
   z-index: 1000;
   width: 100%;
   position: relative;
-  min-height: 60px;
+  min-height: 100px;
 }
 .cid-s48OLK6784 nav.navbar {
   position: fixed;

@@ -39,10 +39,15 @@ namespace SahayogNepal.Controllers
         {
             return View();
         }
-        public IActionResult Privacy()
+        [HttpGet("sahayogi-haat")]
+        public IActionResult SahayogiHaath()
         {
             return View();
         }
+        //public IActionResult Privacy()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

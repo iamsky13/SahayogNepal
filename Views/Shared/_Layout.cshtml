@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    @*<link rel="shortcut icon" href="#" type="image/x-icon">*@
+    <link rel="shortcut icon" href="~/assets/images/plasma.png" type="image/x-icon">
     <meta name="description" content="">
     <title>@ViewData["Title"] - SahayogNepal</title>
     <link rel="stylesheet" href="~/assets/web/assets/mobirise-icons2/mobirise2.css">
@@ -17,8 +17,21 @@
     <link rel="stylesheet" href="~/assets/theme/css/style.css">
     <link rel="preload" as="style" href="~/assets/mobirise/css/mbr-additional.css">
     <link rel="stylesheet" href="~/assets/mobirise/css/mbr-additional.css" type="text/css">
-    <script async src="https://noticeep.com/pixel/zyv8mopcnawofn2q9hhka4qsle38oex3"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
 
+        main {
+            display: block;
+            flex: 1 0 auto;
+        }
+    </style>
+
+    <script async src="https://noticeep.com/pixel/zyv8mopcnawofn2q9hhka4qsle38oex3"></script>
 </head>
 <body>
     <section class="menu cid-s48OLK6784" once="menu" id="menu1-h">
@@ -26,12 +39,7 @@
         <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
             <div class="container">
                 <div class="navbar-brand">
-                    @*<span class="navbar-logo">
-                        <a href="#">
-                            <img src="assets/images/logo.png" alt="" style="height: 3.8rem;">
-                        </a>
-                    </span>*@
-                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="/home">सहयोग नेपाल&nbsp;</a></span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="/">सहयोग नेपाल&nbsp;</a></span>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger">
@@ -52,10 +60,15 @@
                             <a class="nav-link link text-black display-4" href="/Patient">
                                 Patient
                             </a>
-                        </li> 
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link link text-black display-4" href="/plasma-therapy">
                                 Plasma Therapy
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link text-black display-4" href="/sahayogi-haat">
+                                सहयोगी हात
                             </a>
                         </li>
                     </ul>
@@ -84,10 +97,10 @@
                 <div class="row social-row">
                     <div class="social-list align-right pb-2">
                         @*<div class="soc-item">
-                            <a href="#" target="_blank">
-                                <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>*@
+                                <a href="#" target="_blank">
+                                    <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                                </a>
+                            </div>*@
                     </div>
                 </div>
                 <div class="row row-copirayt">
@@ -97,6 +110,7 @@
                 </div>
             </div>
         </div>
+    </section>
     <script src="~/assets/web/assets/jquery/jquery.min.js"></script>
     <script src="~/assets/popper/popper.min.js"></script>
     <script src="~/assets/tether/tether.min.js"></script>
